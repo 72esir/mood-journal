@@ -17,7 +17,7 @@ const moodOptions = [
   { id: Mood.TIRED, label: 'Усталость', face: '🥱' },
 ];
 
-const STORAGE_KEY = 'moodEntriesV2';
+const STORAGE_KEY = 'moodEntries';
 
 const formatDate = (date) =>
   new Date(date).toLocaleDateString('ru-RU', {
@@ -34,12 +34,6 @@ function MoodJournal() {
   const saved = localStorage.getItem(STORAGE_KEY);
   return saved ? JSON.parse(saved) : [];
 });
-
-
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    setEntries(saved);
-  }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
