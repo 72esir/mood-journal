@@ -29,7 +29,16 @@ const formatDate = (date) =>
 function MoodJournal() {
   const [selectedMood, setSelectedMood] = useState('');
   const [note, setNote] = useState('');
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(() => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch (e) {
+    console.error('Ошибка чтения localStorage', e);
+    return [];
+  }
+});
+
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
