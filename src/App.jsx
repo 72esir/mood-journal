@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 const Mood = Object.freeze({
-  VERY_GOOD: 2,
-  GOOD: 1,
-  NEUTRAL: 0,
-  BAD: -1,
-  VERY_BAD: -2,
+  VERY_GOOD: 5,
+  GOOD: 4,
+  NEUTRAL: 3,
+  BAD: 2,
+  VERY_BAD: 1,
 });
 
 
