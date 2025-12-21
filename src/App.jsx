@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 const Mood = Object.freeze({
-  JOY: 'joy',
-  CALM: 'calm',
-  INSPIRED: 'inspired',
-  SAD: 'sad',
-  TIRED: 'tired',
+  VERY_GOOD: 2,
+  GOOD: 1,
+  NEUTRAL: 0,
+  BAD: -1,
+  VERY_BAD: -2,
 });
 
+
 const moodOptions = [
-  { id: Mood.JOY, label: 'Радость', face: '😄' },
-  { id: Mood.CALM, label: 'Спокойствие', face: '😊' },
-  { id: Mood.INSPIRED, label: 'Вдохновение', face: '🤩' },
-  { id: Mood.SAD, label: 'Грусть', face: '😔' },
-  { id: Mood.TIRED, label: 'Усталость', face: '🥱' },
+  { id: Mood.VERY_GOOD, label: 'Очень хорошо', face: '😄' },
+  { id: Mood.GOOD, label: 'Хорошо', face: '🙂' },
+  { id: Mood.NEUTRAL, label: 'Нормально', face: '😐' },
+  { id: Mood.BAD, label: 'Не очень', face: '🙁' },
+  { id: Mood.VERY_BAD, label: 'Плохо', face: '😞' },
 ];
 
 const STORAGE_KEY = 'moodEntries';
@@ -56,7 +57,7 @@ function MoodJournal() {
   }, {});
 
   const sortedEntries = [...entries].sort(
-    (a, b) => new Date(b.savedAt || b.date) - new Date(a.savedAt || a.date)
+    (a, b) => new Date(b.savedAt) - new Date(a.savedAt)
   );
 
   const handleSave = () => {
