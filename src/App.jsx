@@ -84,7 +84,6 @@ function MoodJournal() {
     <div className="app">
       <header className="hero">
         <div>
-          <p className="tag">Mood Journal</p>
           <h1>Как ты сегодня?</h1>
           <p className="hint">
             Выбери одного человечка, оставь заметку и сохрани настроение.
